@@ -1,12 +1,8 @@
-torrar("pao de forma")
-torrar("pao integral")
-torrar("pao de manteiga")
-torrar("pao de merda")
+torrar("pao de forma", "Pedro Araujo")
+torrar("pao de mel", "Sabrina Martins")
 
 
-function torrar (pao){
-    console.log ("Tenho três tipos de pães para você, que são: " + pao)
+
+function torrar(pao, nome){
+    console.log("Essa torrada feita de " + pao + " é do " + nome)
 }
-
-
-console.log("teste ola pessoal")
