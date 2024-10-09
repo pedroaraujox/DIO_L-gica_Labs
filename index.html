@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Aplicativo Financeiro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #003366;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cofrinho-section {
+            margin-top: 20px;
+        }
+        .cofrinho-section h3 {
+            color: #003366;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+            display: none;
+        }
+        .results h3 {
+            margin-bottom: 10px;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Tela de Cadastro -->
+        <div class="header">
+            <h1>Cadastro de Conta</h1>
+        </div>
+        
+        <!-- Input de Nome, Email, Senha -->
+        <input type="text" class="input-field" placeholder="Nome Completo">
+        <input type="email" class="input-field" placeholder="Email">
+        <input type="password" class="input-field" placeholder="Senha">
+        
+        <!-- Definir Renda Mensal -->
+        <label for="renda">Renda Mensal:</label>
+        <input type="number" class="input-field" id="renda" placeholder="Informe sua renda (ex: 2000)">
+        
+        <!-- Seção Cofrinho para Contas Obrigatórias -->
+        <div class="cofrinho-section">
+            <h3>Cofrinho de Contas Obrigatórias</h3>
+            
+            <!-- Exemplo: Conta de Luz -->
+            <label for="luz">Conta de Luz:</label>
+            <input type="number" class="input-field" id="luz" placeholder="Valor máximo estimado (ex: 130)">
+        </div>
+
+        <!-- Botão de Cadastro -->
+        <button class="button" onclick="processarDados()">Salvar</button>
+
+        <!-- Resultados -->
+        <div class="results" id="results">
+            <h3>Resumo Financeiro</h3>
+            <p>Saldo na Conta: <span id="saldoConta"></span> reais</p>
+            <p>Valor reservado para o Cofrinho (Conta de Luz): <span id="saldoCofrinho"></span> reais</p>
+        </div>
+    </div>
+
+    <script>
+        function processarDados() {
+            // Obter os valores inseridos
+            const renda = parseFloat(document.getElementById("renda").value);
+            const contaLuz = parseFloat(document.getElementById("luz").value);
+
+            // Lógica simples para subtrair o valor da conta de luz da renda e transferir para o cofrinho
+            const saldoFinal = renda - contaLuz;
+            const cofrinhoLuz = contaLuz;
+
+            // Mostrar os resultados na tela
+            document.getElementById("saldoConta").textContent = saldoFinal.toFixed(2);
+            document.getElementById("saldoCofrinho").textContent = cofrinhoLuz.toFixed(2);
+
+            // Exibir a seção de resultados
+            document.getElementById("results").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
